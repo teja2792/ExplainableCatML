@@ -1,0 +1,7 @@
+Target,Feature,SHAP_Mean_Abs,Permutation_Importance,SHAP_Rank,Permutation_Rank,Methods_Agree_On_Rank
+activity,LED_Color,0.2374,0.2903,2,2,True
+activity,Light_Intensity_mW_cm2,0.6851,1.9527,1,1,True
+activity,Temperature_Rise_C,0.0136,0.0006,3,3,True
+selectivity,LED_Color,42.3993,1.9269,1,1,True
+selectivity,Light_Intensity_mW_cm2,0.6866,0.0015,3,2,False
+selectivity,Temperature_Rise_C,0.7661,-0.0001,2,3,False

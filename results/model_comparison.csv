@@ -1,0 +1,7 @@
+Target,Model,r2,rmse
+activity,random_forest,0.983,0.1073
+activity,xgboost,0.985,0.1019
+activity,lightgbm,0.987,0.096
+selectivity,random_forest,0.982,4.4912
+selectivity,xgboost,0.983,4.4152
+selectivity,lightgbm,0.982,4.5143
