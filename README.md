@@ -9,6 +9,29 @@ Stress-testing five explainability methods against a real, published photocataly
 - Trained and compared three models (Random Forest, XGBoost, LightGBM) across two targets (activity, selectivity).
 - Applied five explainability methods (SHAP, Permutation Importance, ALE, LIME, Counterfactual Search) to the same models and checked whether they agree with each other and with the known ground truth.
 - A self-written counterfactual search independently rediscovered the paper's real experimental finding — that switching to green LED light alone drives selectivity from ~9% to ~98% — without being told the mechanism.
+## Technical Skills Demonstrated (For Interviewers)
+
+**Data Engineering & Literature Grounding**
+- Extracted quantitative data directly from primary literature (PDF/SI parsing), including a 5-point dose-response table used to regress a power-law fit (`scipy.optimize.curve_fit`) rather than inventing a formula.
+- Distinguished strongly-calibrated relationships (activity, backed by a full measured curve) from weakly-calibrated ones (selectivity, backed by a single anchor point) and documented that distinction explicitly rather than presenting both with false equal confidence.
+
+**Machine Learning Engineering**
+- Built a modular pipeline (`preprocessing.py` / `model.py` / `evaluation.py`) shared across three algorithms (Random Forest, XGBoost, LightGBM) and two prediction targets, avoiding duplicated training logic.
+- Used `sklearn.Pipeline` + `ColumnTransformer` for consistent categorical/numeric preprocessing across all six model variants.
+- Identified and fixed a two-target feature-leakage risk (`split_features_target` explicitly selecting feature columns rather than dropping one target, which would silently leave the other target in the training features).
+
+**Explainable AI (XAI)**
+- Applied five distinct explainability methods — SHAP (TreeExplainer), Permutation Importance, ALE, LIME, and a self-written counterfactual search — to the same fixed model, enabling direct method-to-method comparison rather than conflating model and method differences.
+- Designed a deliberate confound variable (temperature) with zero true relationship to either target, then used it as a positive/negative control to test whether each XAI method correctly ruled it out — an experimental-science mindset applied to model interpretability.
+- Correctly diagnosed *why* SHAP and Permutation Importance disagreed on a near-null feature (SHAP reflects trained-model behavior including overfit noise; Permutation reflects actual held-out generalization) rather than treating the disagreement as a bug.
+- Wrote a transparent, dependency-free counterfactual search instead of a black-box library, prioritizing auditability — the search independently rediscovered a real published experimental conclusion (green LED → ~100% selectivity) without being told the mechanism.
+
+**Software Engineering Practices**
+- Wrote an automated `pytest` suite covering both data integrity (value ranges, missing data) and a specific regression test for the feature-leakage bug class described above.
+- Managed version control through real-world friction (diverged branches, merge conflicts, dependency drift) rather than a clean linear history — including catching and fixing a stale `requirements.txt` before it caused a reproducibility failure.
+
+**Scientific Reasoning**
+- Synthesized five methods' outputs into a single cross-validation table, explicitly separating "all methods agree" findings from "methods disagree, here's why" findings — reporting calibrated uncertainty rather than cherry-picking the cleanest result.
 
 ## Scientific Basis
 
