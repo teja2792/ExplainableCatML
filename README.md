@@ -9,7 +9,7 @@ Stress-testing five explainability methods against a real, published photocataly
 - Trained and compared three models (Random Forest, XGBoost, LightGBM) across two targets (activity, selectivity).
 - Applied five explainability methods (SHAP, Permutation Importance, ALE, LIME, Counterfactual Search) to the same models and checked whether they agree with each other and with the known ground truth.
 - A self-written counterfactual search independently rediscovered the paper's real experimental finding — that switching to green LED light alone drives selectivity from ~9% to ~98% — without being told the mechanism.
-## Technical Skills Demonstrated (For Interviewers)
+## Technical Skills Demonstrated
 
 **Data Engineering & Literature Grounding**
 - Extracted quantitative data directly from primary literature (PDF/SI parsing), including a 5-point dose-response table used to regress a power-law fit (`scipy.optimize.curve_fit`) rather than inventing a formula.
