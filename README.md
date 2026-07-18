@@ -74,3 +74,29 @@ Five methods were applied to a fixed XGBoost model per target, so differences re
 **Counterfactual highlight:** given a low-selectivity instance (Red LED, 9.2%), the search found that switching to Green LED alone — with negligible change to intensity — raises predicted selectivity to 97.7%. This independently rediscovers the paper's actual experimental result without being told the mechanism.
 
 ## Repository Structure
+ExplainableCatML
+│
+├── data
+├── notebooks
+├── src
+├── models
+│   ├── activity
+│   └── selectivity
+├── figures
+├── results
+├── tests
+└── docs
+## Project Goals
+
+- Move beyond single-method explainability toward cross-method validation.
+- Ground every synthetic relationship in real, cited experimental data, including honest treatment of weaker calibrations (selectivity) vs. stronger ones (activity).
+- Deliberately include a known confound to test whether explainability methods can correctly rule it out, mirroring the actual experimental design of the source paper.
+- Demonstrate that chemical intuition can be validated computationally, not just asserted.
+
+## Current Status
+
+Complete: dataset generation, three-model training, five explainability methods, cross-method validation, and an automated test suite checking both data integrity and a real regression (two-target feature leakage).
+
+## About Me
+
+I am a materials scientist working at the intersection of heterogeneous catalysis, photocatalysis, nanomaterials, and computational materials science. This repository is a companion to [CatalystML](https://github.com/teja2792/CatalystML), extending that work from prediction into explainability validation.
